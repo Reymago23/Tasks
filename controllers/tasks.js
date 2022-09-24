@@ -3,7 +3,7 @@ const Task = require('../models/Task')
 const getAllTasks = async (req, res) => {
     try {
         const tasks = await Task.find();
-        res.send(tasks)
+        res.send({ tasks })
     } catch (error) {
         res.status(500).send(error)
     }
@@ -17,7 +17,7 @@ const getTask = async (req, res) => {
         if (!task) {
             return res.status(404).json({ message: `no task found with id: ${taskId}` });
         }
-        res.json(task)
+        res.json({ task })
     } catch (error) {
         res.status(500).json(error);
     }
@@ -47,7 +47,7 @@ const updateTask = async (req, res) => {
             return res.status(404).json({ message: `no task found with id: ${taskId}` });
         }
 
-        res.json(task)
+        res.json({ task })
 
 
     } catch (error) {
