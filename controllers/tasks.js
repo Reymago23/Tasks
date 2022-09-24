@@ -39,7 +39,8 @@ const updateTask = async (req, res) => {
             { _id: taskId },
             req.body,
             {
-                new: true
+                new: true,
+                runValidators: true
             })
 
         if (!task) {
